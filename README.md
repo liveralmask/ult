@@ -1,6 +1,6 @@
 # Ult
 
-Tools that work anywhere.
+Ultimate tools that work anywhere.
 
 ## Installation
 
