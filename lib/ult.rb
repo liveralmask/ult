@@ -6,4 +6,5 @@ module Ult
   require "ult/execute"
   require "ult/option"
   require "ult/file"
+  require "ult/dir"
 end
