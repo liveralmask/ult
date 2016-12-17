@@ -6,13 +6,13 @@ def execute( command, input = "" )
     i_r, i_w = IO.pipe
     o_r, o_w = IO.pipe
     e_r, e_w = IO.pipe
+    
     pid = Process.fork{
       i_w.close
-      o_r.close
-      e_r.close
       STDIN.reopen( i_r )
       STDOUT.reopen( o_w )
       STDERR.reopen( e_w )
+      
       Process.exec( command )
     }
     o_w.close
@@ -39,8 +39,6 @@ def execute( command, input = "" )
     errors.push err.inspect
     errors.push err.backtrace
   ensure
-    o_r.close
-    e_r.close
     outputs_thread.join
     errors_thread.join
   end
