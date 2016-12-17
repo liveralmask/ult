@@ -9,4 +9,6 @@ module Ult
   require "ult/dir"
   require "ult/find"
   require "ult/platform"
+  require "ult/replica"
+  require "ult/copy"
 end
