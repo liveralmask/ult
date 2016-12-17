@@ -8,4 +8,5 @@ module Ult
   require "ult/file"
   require "ult/dir"
   require "ult/find"
+  require "ult/platform"
 end
