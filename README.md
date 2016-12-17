@@ -20,7 +20,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO
+[Please check here](https://github.com/liveralmask/ult/tree/master/sample)
 
 ## Contributing
 
