@@ -1,4 +1,5 @@
 require "fileutils"
+require "./path"
 
 def dir?( path )
   Dir.exist?( path )
@@ -13,7 +14,7 @@ def direach( path )
     case name
     when ".", ".."
     else
-      yield( name, File.expand_path( name, path ) )
+      yield( name, fullpath( name, path ) )
     end
   }
 end
