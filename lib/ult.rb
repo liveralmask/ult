@@ -12,4 +12,5 @@ module Ult
   require "ult/replica"
   require "ult/copy"
   require "ult/watchdog"
+  require "ult/assert"
 end
