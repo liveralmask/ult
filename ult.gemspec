@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["liveralmask"]
   spec.email         = ["liveralmask.lisk@gmail.com"]
 
-  spec.summary       = %q{Tools that work anywhere.}
-  spec.description   = %q{Tools that work anywhere.}
+  spec.summary       = %q{Ultimate tools that work anywhere.}
+  spec.description   = %q{Ultimate tools that work anywhere.}
   spec.homepage      = "https://github.com/liveralmask/ult"
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
