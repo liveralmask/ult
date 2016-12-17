@@ -1,5 +1,5 @@
 require "fileutils"
-require "./path"
+require "ult/path"
 
 def dir?( path )
   Dir.exist?( path )

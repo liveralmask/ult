@@ -7,4 +7,5 @@ module Ult
   require "ult/option"
   require "ult/file"
   require "ult/dir"
+  require "ult/find"
 end
