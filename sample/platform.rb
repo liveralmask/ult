@@ -1,4 +1,5 @@
 require "ult"
 extend Ult
 
-p platform
+puts "platform=#{platform}"
+puts "os_type=#{os_type}"

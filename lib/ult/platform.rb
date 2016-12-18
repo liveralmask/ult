@@ -1,14 +1,16 @@
 def platform
-  platform = RUBY_PLATFORM
+  RUBY_PLATFORM
+end
+
+def os_type
   case platform
   when /darwin/
-    os_type = :mac
+    :mac
   when /linux/
-    os_type = :linux
+    :linux
   when /win/
-    os_type = :windows
+    :windows
   else
-    os_type = :unknown
+    :unknown
   end
-  [ platform, os_type ]
 end
