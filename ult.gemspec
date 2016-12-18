@@ -6,6 +6,7 @@ require 'ult/version'
 Gem::Specification.new do |spec|
   spec.name          = "ult"
   spec.version       = Ult::VERSION
+  spec.licenses      = [ "MIT" ]
   spec.authors       = ["liveralmask"]
   spec.email         = ["liveralmask.lisk@gmail.com"]
 
