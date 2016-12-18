@@ -12,8 +12,7 @@ def execute( command, input = "" )
       STDIN.reopen( i_r )
       STDOUT.reopen( o_w )
       STDERR.reopen( e_w )
-      
-      Process.exec( command )
+      exec( command )
     }
     o_w.close
     e_w.close
