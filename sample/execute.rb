@@ -1,9 +1,13 @@
 require "ult"
 extend Ult
 
-status, outputs, errors, command, input = execute *ARGV
+args = ARGV.empty? ? [ "date" ] : ARGV
+status, outputs, errors, command, input = execute *args
 puts command
-puts input
+if ! input.empty?
+  puts "[input]"
+  puts input
+end
 puts "status=#{status}"
 if ! outputs.empty?
   puts "[outputs]"

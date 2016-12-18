@@ -35,10 +35,6 @@ def execute( command, input = "" )
     
     Process.waitpid( pid )
     status = $?.exitstatus
-  rescue => err
-    errors.push err.inspect
-    errors.push err.backtrace
-  ensure
     outputs_thread.join
     errors_thread.join
   end

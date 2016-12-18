@@ -2,9 +2,9 @@ def platform
   platform = RUBY_PLATFORM
   case platform
   when /darwin/
-    type = :mac
+    os_type = :mac
   else
-    type = :unknown
+    os_type = :unknown
   end
   [ platform, type ]
 end

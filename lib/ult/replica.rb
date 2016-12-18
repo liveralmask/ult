@@ -1,19 +1,20 @@
 require "ult/dir"
 require "ult/file"
 require "ult/copy"
+require "ult/remove"
 
 def replica( count, prefix, suffix = "" )
   src = "#{prefix}#{suffix}"
   if dir?( src )
-    count.each{|index|
+    count.times{|index|
       dst = "#{prefix}#{index + 1}#{suffix}"
-      rmdir( dst ) if dir?( dst )
+      remove( dst )
       copy( src, dst )
     }
   elsif file?( src )
-    count.each{|index|
+    count.times{|index|
       dst = "#{prefix}#{index + 1}#{suffix}"
-      rmfile( dst ) if file?( dst )
+      remove( dst )
       copy( src, dst )
     }
   end

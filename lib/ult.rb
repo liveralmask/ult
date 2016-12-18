@@ -11,6 +11,7 @@ module Ult
   require "ult/platform"
   require "ult/replica"
   require "ult/copy"
+  require "ult/remove"
   require "ult/watchdog"
   require "ult/assert"
 end

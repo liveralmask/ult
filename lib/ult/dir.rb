@@ -29,10 +29,18 @@ def pwd
   Dir.pwd
 end
 
-def mkdir( path )
-  FileUtils.mkdir_p( path )
+def mkdir( path, &block )
+  FileUtils.mkdir_p( path ) if ! dir?( path )
+  dir( path ){
+    block.call if block_given?
+  }
 end
 
 def rmdir( path )
-  FileUtils.rm_rf( path )
+  FileUtils.rm_rf( path ) if dir?( path )
+end
+
+def rmkdir( path )
+  rmdir( path )
+  mkdir( path )
 end
