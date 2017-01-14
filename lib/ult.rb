@@ -22,7 +22,7 @@ module Ult
   module_function :find
   
   require "ult/platform"
-  module_function :platform, :os_type
+  module_function :platform, :mac?, :linux?, :windows?
   
   require "ult/replica"
   module_function :replica

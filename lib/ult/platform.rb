@@ -2,15 +2,14 @@ def platform
   RUBY_PLATFORM
 end
 
-def os_type
-  case platform
-  when /darwin/
-    :mac
-  when /linux/
-    :linux
-  when /win/
-    :windows
-  else
-    :unknown
-  end
+def mac?
+  ! platform.match( /darwin/ ).nil?
+end
+
+def linux?
+  ! platform.match( /linux/ ).nil?
+end
+
+def windows?
+  mac? ? false : ! platform.match( /win/ ).nil?
 end
