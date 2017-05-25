@@ -2,14 +2,14 @@ require "ult/dir"
 
 def safety( &block )
   root_dir = pwd
-  result = nil
   begin
     block.call
   rescue Exception => e
-    result = e
+    dir( root_dir )
+    raise e
   rescue StandardError => e
-    result = e
+    dir( root_dir )
+    raise e
   end
-  dir( root_dir ) if root_dir != pwd
-  result
+  dir( root_dir )
 end

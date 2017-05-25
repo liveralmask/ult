@@ -20,9 +20,7 @@ def direach( path )
 end
 
 def dir( path, &block )
-  Dir.chdir( path ){
-    block.call
-  }
+  Dir.chdir( path, &block )
 end
 
 def pwd
@@ -31,9 +29,7 @@ end
 
 def mkdir( path, &block )
   FileUtils.mkdir_p( path ) if ! dir?( path )
-  dir( path ){
-    block.call if block_given?
-  }
+  dir( path, &block )
 end
 
 def rmdir( path )
