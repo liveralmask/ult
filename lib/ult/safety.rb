@@ -9,8 +9,7 @@ def safety( &block )
     result = e
   rescue StandardError => e
     result = e
-  ensure
-    dir( root_dir ) if root_dir != pwd
-    result
   end
+  dir( root_dir ) if root_dir != pwd
+  result
 end
