@@ -38,4 +38,7 @@ module Ult
   
   require "ult/assert"
   module_function :assert
+  
+  require "ult/safety"
+  module_function :safety
 end
