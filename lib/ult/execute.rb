@@ -1,7 +1,6 @@
-def execute( command, input = "" )
+def execute( command, input = "", &block )
+  block = lambda{|type, io, msg| io.puts msg } if ! block_given?
   status  = -1
-  outputs = []
-  errors  = []
   begin
     i_r, i_w = IO.pipe
     o_r, o_w = IO.pipe
@@ -21,21 +20,18 @@ def execute( command, input = "" )
     i_w.close
     
     # IOブロックによるプロセス停止を防ぐため、スレッドで定期的に読み取る
-    outputs_thread = Thread.start{
-      o_r.each{|line|
-        outputs.push line.chomp
-      }
+    block.call( :cmd, $stdout, command )
+    out_thread = Thread.start{
+      o_r.each{|line| block.call( :out, $stdout, line.chomp ) }
     }
-    errors_thread = Thread.start{
-      e_r.each{|line|
-        errors.push line.chomp
-      }
+    err_thread = Thread.start{
+      e_r.each{|line| block.call( :err, $stderr, line.chomp ) }
     }
     
     Process.waitpid( pid )
     status = $?.exitstatus
-    outputs_thread.join
-    errors_thread.join
+    out_thread.join
+    err_thread.join
   end
-  [ status, outputs, errors, command, input ]
+  status
 end
