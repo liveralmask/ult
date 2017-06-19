@@ -4,7 +4,7 @@ module Ult
   extend self
   
   require "ult/execute"
-  module_function :execute
+  module_function :execute, :shell
   
   require "ult/path"
   module_function :fullpath
