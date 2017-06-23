@@ -52,8 +52,12 @@ def execute( command, input = "", &block )
   status
 end
 
-def shell( command, input = "", &block )
-  status = execute( command, input )
+def shell( command, &block )
+  pid = Process.fork{
+    exec( command )
+  }
+  Process.waitpid( pid )
+  status = $?.exitstatus
   if block_given?
     block.call( status )
   else
