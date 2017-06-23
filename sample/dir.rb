@@ -10,3 +10,6 @@ direach( "." ){|name, path|
 dir( "/" ){
   puts "pwd=#{pwd}"
 }
+puts "#{pwd}"
+dir( "/" )
+puts "#{pwd}"
