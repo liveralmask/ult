@@ -31,6 +31,7 @@ def execute( command, input = "", &block )
           chars = []
         end
       }
+      block.call( :out, $stdout, chars.join ) if ! chars.empty?
     }
     err_thread = Thread.start{
       chars = []
@@ -42,6 +43,7 @@ def execute( command, input = "", &block )
           chars = []
         end
       }
+      block.call( :err, $stderr, chars.join ) if ! chars.empty?
     }
     
     Process.waitpid( pid )
@@ -53,13 +55,9 @@ def execute( command, input = "", &block )
 end
 
 def shell( command, &block )
-  pid = Process.fork{
-    exec( command )
-  }
-  Process.waitpid( pid )
-  status = $?.exitstatus
+  status = execute( command )
   if block_given?
-    block.call( status )
+    status = block.call( status )
   else
     raise "#{command} => #{status}" if 0 != status
   end
